@@ -1,0 +1,30 @@
+[tools]
+talosctl = "1.10.9"
+
+[vars]
+talos_cp_01_ip = "192.168.56.101"
+talos_worker_01_ip = "192.168.56.102"
+talos_worker_02_ip = "192.168.56.103"
+talos_cluster_name = "talos-vbox-cluster-01"
+config_output_dir = "./_out/{{vars.talos_cluster_name}}"
+
+[env]
+TEST = "production"
+
+[tasks.generate-config]
+description = 'Generate Talos configuration files'
+run = '''
+talosctl gen config \
+    {{vars.talos_cluster_name}} \
+    https://${{vars.talos_cp_01_ip}}:6443 \
+    --output-dir={{vars.config_output_dir}}
+'''
+
+[tasks.create-cp-node]
+description = 'Create Talos control plane node'
+run = '''
+talosctl apply-config \
+    --insecure \
+    --nodes {{vars.talos_cp_01_ip}} \
+    --file {{vars.config_output_dir}}/controlplane.yaml
+'''

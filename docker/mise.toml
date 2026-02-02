@@ -1,0 +1,25 @@
+[tools]
+talosctl = "1.12.2"
+kubectl = "1.35"
+helm = "latest"
+
+[vars]
+talos_cluster_name = "talos-lab-docker"
+talos_cluster_net_cidr = "10.10.0.0/24"
+
+[tasks.setup-cluster]
+description = 'Set up Talos cluster with control plane and worker nodes'
+run = '''
+talosctl cluster create docker \
+    --name {{vars.talos_cluster_name}} \
+    --subnet {{vars.talos_cluster_net_cidr}} \
+    --exposed-ports 80:80/tcp,443:443/tcp,8080:8080/tcp,8443:8443/tcp \
+    --workers 1
+'''
+
+[tasks.delete-cluster]
+description = 'Delete Talos cluster'
+run = '''
+talosctl cluster destroy --name {{vars.talos_cluster_name}}
+rm -rf ~/.talos/clusters/{{vars.talos_cluster_name}}
+'''
