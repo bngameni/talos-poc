@@ -1,5 +1,7 @@
 [shell_alias]
 t = "talosctl"
+k = "kubectl"
+h = "helm"
 
 [tools]
 kubectl = "1.35"
