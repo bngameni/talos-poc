@@ -1,7 +1,5 @@
 [tools]
 talosctl = "1.12.2"
-kubectl = "1.35"
-helm = "latest"
 
 [vars]
 talos_cluster_name = "talos-lab-docker"
