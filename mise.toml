@@ -1,3 +1,6 @@
+[settings]
+experimental = true
+
 [shell_alias]
 t = "talosctl"
 k = "kubectl"
