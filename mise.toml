@@ -14,9 +14,9 @@ kubectx = "0.9.5"
 k9s = "0.50.18"
 
 [hooks]
-enter = '''
-source <(kubectl completion bash)
-source <(helm completion bash)
-source <(kubens completion bash)
-source <(kubectx completion bash)
-'''
+enter = [
+    "source <(kubectl completion bash)",
+    "source <(helm completion bash)",
+    "source <(kubens completion bash)",
+    "source <(kubectx completion bash)"
+]
