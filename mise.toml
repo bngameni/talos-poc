@@ -6,3 +6,14 @@ h = "helm"
 [tools]
 kubectl = "1.35"
 helm = "4.1.0"
+kubens = "latest"
+kubectx = "latest"
+k9s = "latest"
+
+[hooks]
+enter = '''
+source <(kubectl completion bash)
+source <(helm completion bash)
+source <(kubens completion bash)
+source <(kubectx completion bash)
+'''
