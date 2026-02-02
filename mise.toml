@@ -1,0 +1,6 @@
+[shell_alias]
+t = "talosctl"
+
+[tools]
+kubectl = "1.35"
+helm = "4.1.0"
