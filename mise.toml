@@ -13,10 +13,11 @@ kubens = "0.9.5"
 kubectx = "0.9.5"
 k9s = "0.50.18"
 
-[hooks]
-enter = [
-    "source <(kubectl completion bash)",
-    "source <(helm completion bash)",
-    "source <(kubens completion bash)",
-    "source <(kubectx completion bash)"
-]
+[hooks.enter]
+shell = "bash"
+script = '''
+source <(kubectl completion bash)
+source <(helm completion bash)
+complete -o default -F __start_kubectl k
+complete -o default -F __start_helm h
+'''
