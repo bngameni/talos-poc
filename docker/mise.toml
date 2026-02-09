@@ -11,7 +11,7 @@ run = '''
 talosctl cluster create docker \
     --name {{vars.talos_cluster_name}} \
     --subnet {{vars.talos_cluster_net_cidr}} \
-    --exposed-ports 80:80/tcp,443:443/tcp,8080:8080/tcp,8443:8443/tcp \
+    --exposed-ports 81:80/tcp,444:443/tcp,8081:8080/tcp,8444:8443/tcp \
     --workers 1
 '''
 
